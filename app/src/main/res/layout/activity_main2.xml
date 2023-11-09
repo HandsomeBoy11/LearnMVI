@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvLink"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:autoLink="all"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="dpurl.cn"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:text="开始" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:maxLength="9"
+        android:minWidth="80dp"
+        android:textSize="18sp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons"
+        android:layout_width="match_parent"
+        android:paddingHorizontal="16dp"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/vBg"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_homework_progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <View
+            android:id="@+id/vProgress"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@drawable/homework_progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textSize="14sp"
+            android:text="进度"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintHorizontal_bias="0"
+            android:background="@drawable/homework_progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

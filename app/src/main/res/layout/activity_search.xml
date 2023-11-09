@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_bg_selector"
+        android:cursorVisible="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#959595"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tvSearchResult"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</LinearLayout>

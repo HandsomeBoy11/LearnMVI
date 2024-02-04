@@ -15,12 +15,13 @@
         android:text="dpurl.cn"
         android:textStyle="bold" />
 
-    <Button
+    <TextView
         android:id="@+id/btStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="all"
-        android:text="开始" />
+        android:textSize="15dp"
+        android:text="我们都有一个家名字叫中国兄弟姐妹都很多景色也不错哈哈我就是来测试的" />
 
     <EditText
         android:id="@+id/et"

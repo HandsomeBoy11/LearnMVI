@@ -17,4 +17,9 @@
         <attr name="BottomDrag_ContentView" format="reference" /><!--内容View-->
         <attr name="BottomDrag_BottomBorderHeigth" format="reference|integer|dimension" /><!--边界高度-->
     </declare-styleable>
+    <declare-styleable name="DragBottomLayout">
+        <attr name="bottomDrag_BottomView" format="reference" /><!--底部View-->
+        <attr name="bottomDrag_ContentView" format="reference" /><!--内容View-->
+        <attr name="bottomDrag_BottomBorderHeigth" format="reference|integer|dimension" /><!--边界高度-->
+    </declare-styleable>
 </resources>

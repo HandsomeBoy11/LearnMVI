@@ -1,0 +1,117 @@
+@startuml
+'https://plantuml.com/
+package "Reporter Library" {
+    interface IReporter {
+        + report(parameter: Parameter)
+    }
+
+    class WBLiveReporter<<埋点框架入口>> {
+        - eventCache: LruCache
+        - parameterCache: LruCache
+        - reporterCache: LruCache
+        --
+        + setDefaultReporter()
+        + setEventCacheLimit()
+        + setReporterCacheLimit()
+        + setParameterCacheLimit()
+        + <T : Object> get(eventClazz: Class<T>): T
+        - <T : Object> create(event: Class<T>): T
+        - execute(parameter: Parameter)
+    }
+
+    class Parameter<<埋点参数Model>> {
+        - eventName: String
+        - eventAction: String
+        - eventMap: HashMap<String, Object>
+        - reporterClass: Class<out IReporter>
+    }
+
+    class ParamParser<<埋点参数解析器>> {
+        + parse()
+        - parseClassAnnotations()
+        - parseMethodAnnotations()
+        - parseMethodParameterAnnotations()
+    }
+
+    'Library模块关联关系
+    ParamParser *--> Parameter
+    WBLiveReporter <-- ParamParser
+    WBLiveReporter <-- IReporter
+
+    package ReportAnnotation <<Rectangle>> #90333333{
+        annotation EventReporter {
+            + clazz: Class<out IReporter>
+        }
+        annotation EventAction {
+            + action: String
+        }
+        annotation EventName {
+            + name: String
+        }
+        annotation EventParam {
+            + key: String
+        }
+        annotation EventParamExt
+        annotation EventParamMap
+    }
+
+    ParamParser o--> ReportAnnotation
+    'note
+    note left of WBLiveReporter: 通过get()方法，创建或从Cache中获取Report实例。\n通过create()方法，利用动态代理创建report实例。
+}
+
+package "Biz" {
+    interface IBizReporter {
+        + initBizReporter(context: ILiveContext)
+    }
+    abstract AbsBizReporter {
+        + context: ILiveContext
+        + initBizReporter(context: ILiveContext)
+    }
+    class WBLiveBizReporter
+    class WBLiveTraceReporter
+
+    'BIZ模块关联关系
+    IBizReporter <|.. AbsBizReporter
+    AbsBizReporter <|-- WBLiveBizReporter
+    AbsBizReporter <|-- WBLiveTraceReporter
+
+    package BizReport <<Rectangle>> #90333333 {
+        interface BizReport1 {
+            + report1()
+            + report2()
+        }
+        interface BizReport2 {
+            + report1()
+            + report2()
+        }
+        interface TraceReport1 {
+            + report1()
+            + report2()
+        }
+        interface TraceReport2 {
+            + report1()
+            + report2()
+        }
+    }
+
+    package DynamicProxy <<Cloud>> {
+    }
+
+    WBLiveBizReporter <.. DynamicProxy
+    WBLiveBizReporter <.. DynamicProxy
+    WBLiveTraceReporter <.. DynamicProxy
+    WBLiveTraceReporter <.. DynamicProxy
+    DynamicProxy <|.. BizReport1
+    DynamicProxy <|.. BizReport2
+    DynamicProxy <|.. TraceReport1
+    DynamicProxy <|.. TraceReport2
+}
+
+'跨模块关系
+IReporter <|-- IBizReporter
+WBLiveReporter <|.. DynamicProxy
+ReportAnnotation <.down. BizReport
+"Reporter Library" <.. "Biz"
+@enduml
+

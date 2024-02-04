@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //自定义moduleName,防止打包生成的aar名字和其他library冲突
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.wdt.reporter.library"]
+    }
+
+}
+
+dependencies {
+    //kotlin 反射
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+}

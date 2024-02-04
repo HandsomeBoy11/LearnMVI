@@ -1,6 +1,8 @@
 package com.wj.learnmvi.base2.impl
 
 import android.app.Application
+import com.wj.learnmvi.dao.SQLiteUtil
+import com.wj.learnmvi.utils.db.DatabaseHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext
@@ -22,6 +24,7 @@ class MyApp : Application() {
         super.onCreate()
         mApp = this
         initKoin()
+        SQLiteUtil.getInstance().initDb(this)
     }
 
     private fun initKoin() {

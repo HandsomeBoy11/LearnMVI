@@ -37,6 +37,9 @@ android {
             res.srcDirs += ['src/main/res', 'src/main/groovy']
         }
     }
+    dataBinding{
+        enabled =true
+    }
 
 }
 greendao {

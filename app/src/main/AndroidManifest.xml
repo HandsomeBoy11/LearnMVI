@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnMVI">
         <activity
-            android:name=".dao.GreenDaoActivity"
+            android:name=".dataBindingDemo.FirstBdActivity"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +35,8 @@
 
 
         </activity>
+<!--        <activity android:name=".FirstBdActivity" />-->
+        <!--<activity android:name=".log.LogTestActivity" />-->
         <!--<activity android:name=".ExoPlayerActivity" />-->
         <!-- <activity android:name=".SearchActivity" />-->
         <receiver android:name=".alarm.UpdateReceiver" />
